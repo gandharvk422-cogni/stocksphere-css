@@ -1,0 +1,32 @@
+<div class="card border rounded p-4">
+  <div class="d-flex flex-column flex-sm-row justify-content-between mb-4 gap-3">
+    <div>
+      <h5 class="fw-semibold mb-1">Statistics</h5>
+      <p class="text-secondary small mb-0">Target you’ve set for each month</p>
+    </div>
+
+    <div class="d-flex align-items-start gap-3">
+      <div class="btn-group">
+        <button class="btn btn-light btn-sm active">Overview</button>
+        <button class="btn btn-light btn-sm">Sales</button>
+        <button class="btn btn-light btn-sm">Revenue</button>
+      </div>
+
+      <div class="position-relative">
+        <input
+          type="text"
+          class="form-control form-control-sm ps-5"
+          placeholder="Select dates"
+          readonly
+        />
+        <span class="position-absolute top-50 start-0 translate-middle-y ps-3 text-secondary">
+          📅
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="overflow-auto">
+    <div id="chartThree" style="min-width:700px"></div>
+  </div>
+</div>
