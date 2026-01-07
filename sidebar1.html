@@ -1,4 +1,89 @@
-<!-- Sidebar (structure preserved, dark/light via Bootstrap theme) -->
-<aside class="position-fixed top-0 start-0 vh-100 border-end bg-body text-body" style="width:290px;">
-  <!-- ORIGINAL SIDEBAR CONTENT UNCHANGED -->
+<aside
+  :class="sidebarToggle ? 'translate-x-0' : '-translate-x-100'"
+  class="sidebar position-fixed start-0 top-0 z-3 d-flex flex-column vh-100"
+  style="width:290px"
+  @click.outside="sidebarToggle = false">
+
+  <!-- Sidebar container -->
+  <div
+    class="d-flex flex-column h-100 overflow-auto border-end bg-body text-body px-4">
+
+    <!-- SIDEBAR HEADER -->
+    <div
+      :class="sidebarToggle ? 'justify-content-center' : 'justify-content-between'"
+      class="sidebar-header d-flex align-items-center gap-2 py-4">
+
+      <a href="index.html">
+        <span class="logo" :class="sidebarToggle ? 'd-none' : ''">
+          <img class="d-dark-none" src="./images/logo/logo.svg" alt="Logo" />
+          <img class="d-none d-dark-block" src="./images/logo/logo-dark.svg" alt="Logo" />
+        </span>
+
+        <img
+          class="logo-icon"
+          :class="sidebarToggle ? 'd-lg-block' : 'd-none'"
+          src="./images/logo/logo-icon.svg"
+          alt="Logo" />
+      </a>
+    </div>
+    <!-- SIDEBAR HEADER -->
+
+    <!-- Sidebar Menu -->
+    <nav x-data="{selected: $persist('Dashboard')}">
+
+      <!-- MENU GROUP -->
+      <h3 class="text-uppercase small text-secondary mb-3">
+        <span :class="sidebarToggle ? 'd-lg-none' : ''">Menu</span>
+      </h3>
+
+      <ul class="list-unstyled d-flex flex-column gap-3 mb-4">
+
+        <!-- Dashboard -->
+        <li>
+          <a
+            href="#"
+            class="menu-item d-flex align-items-center gap-3 text-decoration-none"
+            @click.prevent="selected = selected === 'Dashboard' ? '' : 'Dashboard'">
+
+            <span class="menu-item-text" :class="sidebarToggle ? 'd-lg-none' : ''">
+              Dashboard
+            </span>
+          </a>
+
+          <div :class="selected === 'Dashboard' ? 'd-block' : 'd-none'">
+            <ul class="menu-dropdown list-unstyled ps-4 mt-2 d-flex flex-column gap-1">
+              <li><a href="index.html" class="menu-dropdown-item">eCommerce</a></li>
+              <li><a href="analytics.html" class="menu-dropdown-item">Analytics</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- Calendar -->
+        <li>
+          <a
+            href="calendar.html"
+            class="menu-item d-flex align-items-center gap-3 text-decoration-none">
+
+            <span class="menu-item-text" :class="sidebarToggle ? 'd-lg-none' : ''">
+              Calendar
+            </span>
+          </a>
+        </li>
+
+        <!-- Profile -->
+        <li>
+          <a
+            href="profile.html"
+            class="menu-item d-flex align-items-center gap-3 text-decoration-none">
+
+            <span class="menu-item-text" :class="sidebarToggle ? 'd-lg-none' : ''">
+              User Profile
+            </span>
+          </a>
+        </li>
+
+      </ul>
+
+    </nav>
+  </div>
 </aside>
