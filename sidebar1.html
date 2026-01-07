@@ -1,42 +1,38 @@
 <aside
   :class="sidebarToggle ? 'translate-x-0' : '-translate-x-100'"
-  class="sidebar position-fixed start-0 top-0 z-3 d-flex flex-column vh-100"
-  style="width:290px"
+  class="sidebar position-fixed start-0 top-0 vh-100 d-flex flex-column border-end bg-body text-body"
+  style="width:290px;"
   @click.outside="sidebarToggle = false">
 
-  <!-- Sidebar container -->
-  <div
-    class="d-flex flex-column h-100 overflow-auto border-end bg-body text-body px-4">
+  <div class="d-flex flex-column h-100 overflow-auto px-4 py-4">
 
-    <!-- SIDEBAR HEADER -->
+    <!-- Logo -->
     <div
       :class="sidebarToggle ? 'justify-content-center' : 'justify-content-between'"
-      class="sidebar-header d-flex align-items-center gap-2 py-4">
+      class="d-flex align-items-center mb-4">
 
-      <a href="index.html">
+      <a href="index.html" class="text-decoration-none">
         <span class="logo" :class="sidebarToggle ? 'd-none' : ''">
-          <img class="d-dark-none" src="./images/logo/logo.svg" alt="Logo" />
-          <img class="d-none d-dark-block" src="./images/logo/logo-dark.svg" alt="Logo" />
+          <img class="d-dark-none" src="./images/logo/logo.svg" alt="Logo">
+          <img class="d-none d-dark-block" src="./images/logo/logo-dark.svg" alt="Logo">
         </span>
 
         <img
           class="logo-icon"
           :class="sidebarToggle ? 'd-lg-block' : 'd-none'"
           src="./images/logo/logo-icon.svg"
-          alt="Logo" />
+          alt="Logo">
       </a>
     </div>
-    <!-- SIDEBAR HEADER -->
 
-    <!-- Sidebar Menu -->
-    <nav x-data="{selected: $persist('Dashboard')}">
+    <!-- Menu -->
+    <nav x-data="{ selected: $persist('Dashboard') }">
 
-      <!-- MENU GROUP -->
-      <h3 class="text-uppercase small text-secondary mb-3">
+      <h3 class="text-uppercase text-secondary small mb-3">
         <span :class="sidebarToggle ? 'd-lg-none' : ''">Menu</span>
       </h3>
 
-      <ul class="list-unstyled d-flex flex-column gap-3 mb-4">
+      <ul class="list-unstyled d-flex flex-column gap-2 mb-4">
 
         <!-- Dashboard -->
         <li>
@@ -48,12 +44,45 @@
             <span class="menu-item-text" :class="sidebarToggle ? 'd-lg-none' : ''">
               Dashboard
             </span>
+
+            <svg
+              class="ms-auto"
+              :class="sidebarToggle ? 'd-none' : ''"
+              width="20" height="20" viewBox="0 0 20 20" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585"
+                stroke=""
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
           </a>
 
+          <!-- Dropdown -->
           <div :class="selected === 'Dashboard' ? 'd-block' : 'd-none'">
-            <ul class="menu-dropdown list-unstyled ps-4 mt-2 d-flex flex-column gap-1">
-              <li><a href="index.html" class="menu-dropdown-item">eCommerce</a></li>
-              <li><a href="analytics.html" class="menu-dropdown-item">Analytics</a></li>
+            <ul
+              :class="sidebarToggle ? 'd-lg-none' : 'd-flex'"
+              class="menu-dropdown mt-2 d-flex flex-column gap-1 ps-4">
+
+              <li>
+                <a
+                  href="index.html"
+                  class="menu-dropdown-item"
+                  :class="page === 'index' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                  eCommerce
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="analytics.html"
+                  class="menu-dropdown-item"
+                  :class="page === 'analytics' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'">
+                  Analytics
+                </a>
+              </li>
+
             </ul>
           </div>
         </li>
@@ -63,7 +92,6 @@
           <a
             href="calendar.html"
             class="menu-item d-flex align-items-center gap-3 text-decoration-none">
-
             <span class="menu-item-text" :class="sidebarToggle ? 'd-lg-none' : ''">
               Calendar
             </span>
@@ -75,15 +103,36 @@
           <a
             href="profile.html"
             class="menu-item d-flex align-items-center gap-3 text-decoration-none">
-
             <span class="menu-item-text" :class="sidebarToggle ? 'd-lg-none' : ''">
-              User Profile
+              Profile
             </span>
           </a>
         </li>
 
       </ul>
-
     </nav>
+
+    <!-- Promo Box -->
+    <div
+      class="mx-auto mt-auto mb-4 w-100 rounded bg-light px-4 py-4 text-center"
+      style="max-width:240px;">
+
+      <h3 class="mb-2 fw-semibold text-body">
+        TailAdmin Pro
+      </h3>
+
+      <p class="mb-3 small text-secondary">
+        Get All Dashboards and 300+ UI Elements
+      </p>
+
+      <a
+        href="https://tailadmin.com/pricing"
+        target="_blank"
+        rel="nofollow"
+        class="d-flex align-items-center justify-content-center btn btn-primary">
+        Upgrade Plan
+      </a>
+    </div>
+
   </div>
 </aside>
