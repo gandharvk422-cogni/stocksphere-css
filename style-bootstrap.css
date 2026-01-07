@@ -1,0 +1,68 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+
+:root {
+  --font-outfit: "Outfit", sans-serif;
+  --brand-500: #465fff;
+  --brand-600: #3641f5;
+  --gray-50: #f9fafb;
+  --gray-100: #f2f4f7;
+  --gray-200: #e4e7ec;
+  --gray-300: #d0d5dd;
+  --gray-400: #98a2b3;
+  --gray-500: #667085;
+  --gray-700: #344054;
+  --gray-900: #101828;
+  --shadow-sm: 0 1px 3px rgba(16,24,40,.1);
+  --shadow-md: 0 4px 8px rgba(16,24,40,.1);
+}
+
+body {
+  font-family: var(--font-outfit);
+  background-color: var(--gray-50);
+  color: var(--gray-900);
+}
+
+.sidebar {
+  width: 80px;
+  transition: width .3s ease;
+}
+.sidebar:hover { width: 290px; }
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .5rem .75rem;
+  border-radius: .5rem;
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  text-decoration: none;
+}
+.menu-item:hover {
+  background-color: var(--gray-100);
+  color: var(--gray-900);
+}
+.menu-item.active {
+  background-color: rgba(70,95,255,.1);
+  color: var(--brand-500);
+}
+
+.menu-dropdown { display: none; }
+.sidebar:hover .menu-dropdown { display: block; }
+
+.custom-scrollbar::-webkit-scrollbar { width: 6px; }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--gray-300);
+  border-radius: 4px;
+}
+
+.task {
+  transition: all .2s ease;
+}
+.task.is-dragging {
+  box-shadow: var(--shadow-md);
+  opacity: .8;
+  cursor: grabbing;
+}
